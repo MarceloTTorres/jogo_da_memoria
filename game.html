@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- 
+    As divs dentro do body são obrigatorias. Elas podem mudar de posição, mas não podem ser renomeadas (alterar ID)
+    e nem remover as class ou outros atributos que já possuirem.
+    Você pode adicionar outras tags, class ou atributos, desde que nao afetem os já existentes.
+      -->
+
+      <div id="placar">
+          <div id="p0">Aguardando...</div>
+          <div id="p1">Aguardando...</div>
+          <div id="placar_p0"></div>
+          <div id="placar_p1"></div>
+      </div>
+      <div id="deck">
+        <div id="c_0" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_1" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_2" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_3" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_4" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_5" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_6" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_7" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_8" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_9" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_10" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_11" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_12" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_13" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_14" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_15" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_16" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_17" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_18" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_19" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_20" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_21" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_22" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+        <div id="c_23" data-descoberta="false" onclick="vira_carta(this.id)"></div>
+      </div>
+
+      <button id="novo_jogo" onclick="reset()">Recomeçar</button>
+
+      <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+      <script src="./client.js"></script>
+</body>
+</html>

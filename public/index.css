@@ -1,0 +1,199 @@
+/* --- PIXEL ART / RETRO UI --- */
+
+/* (Opcional) Fonte retrô do Google: Press Start 2P.
+   Pode remover/alterar se preferir outra. */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root{
+  --bg-deep: #0b0f1a;
+  --bg-mid:  #121a2b;
+  --grid:    #1c2742;
+  --accent:  #00e5ff;  /* ciano neon */
+  --accent2: #ff3df3;  /* magenta neon */
+  --text:    #e5f7ff;
+  --warning: #ffcc00;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
+  margin: 0;
+  background:
+    /* grade pixelada */
+    linear-gradient(0deg, transparent 23px, var(--grid) 24px),
+    linear-gradient(90deg, transparent 23px, var(--grid) 24px),
+    radial-gradient(100vmax 100vmax at 50% 100%, var(--bg-mid), var(--bg-deep));
+  background-size: 24px 24px, 24px 24px, cover;
+  color: var(--text);
+  font-family: "Press Start 2P", system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  image-rendering: pixelated;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* Painel central “cartucho” criado com pseudo-elemento */
+body::before{
+  content: "";
+  position: absolute;
+  width: min(720px, 92vw);
+  max-width: 92vw;
+  height: min(500px, 80vh);
+  background: #0e1628;
+  border: 4px solid #000;
+  /* Borda pixel com sombras em degraus */
+  box-shadow:
+    0 0 0 4px #26324d,
+    0 0 0 8px #000,
+    0 0 0 12px #26324d,
+    0 0 32px 12px rgba(0, 229, 255, .15),
+    inset 0 0 0 2px rgba(255,255,255,.04);
+  border-radius: 0;
+  z-index: 0;
+  filter: saturate(1.2);
+}
+
+/* Scanlines/CRT */
+body::after{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.08) 3px
+    );
+  mix-blend-mode: multiply;
+}
+
+/* Layout de conteúdo (sem alterar o HTML) */
+h1, label, input, button{
+  position: relative;
+  z-index: 1;
+}
+
+h1{
+  margin: 0 0 28px;
+  font-size: clamp(22px, 3.2vw, 38px);
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--text);
+  text-shadow:
+    0 0 8px rgba(0,229,255,.75),
+    0 0 18px rgba(255,61,243,.45),
+    2px 2px 0 #000;
+  animation: titlePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes titlePulse{
+  0%, 100% { text-shadow:
+      0 0 6px rgba(0,229,255,.6),
+      0 0 14px rgba(255,61,243,.35),
+      2px 2px 0 #000; }
+  50% { text-shadow:
+      0 0 12px rgba(0,229,255,1),
+      0 0 26px rgba(255,61,243,.6),
+      2px 2px 0 #000; }
+}
+
+label{
+  display: block;
+  margin: 6px auto 10px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--warning);
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Campo de texto com moldura pixel */
+#apelido{
+  display: block;
+  margin: 0 auto 18px;
+  width: min(520px, 80vw);
+  padding: 16px 18px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--text);
+  background: #0a1122;
+  border: 0;
+  outline: 0;
+  box-shadow:
+    0 0 0 4px #000,
+    0 0 0 8px #1f2a45,
+    inset 0 0 0 2px rgba(255,255,255,.06);
+  caret-color: var(--accent);
+}
+
+#apelido:focus{
+  box-shadow:
+    0 0 0 4px #000,
+    0 0 0 8px #1f2a45,
+    0 0 18px 8px rgba(0,229,255,.25),
+    inset 0 0 0 2px rgba(0,229,255,.4);
+}
+
+/* Botão 8-bit */
+button{
+  display: block;
+  margin: 6px auto 0;
+  padding: 14px 28px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #001019;
+  background: linear-gradient(#00e5ff, #00bcd4);
+  border: none;
+  cursor: pointer;
+  /* moldura pixel */
+  box-shadow:
+    0 0 0 4px #000,
+    0 0 0 8px #1f2a45,
+    inset -4px -4px 0 0 rgba(0,0,0,.25),
+    inset 4px 4px 0 0 rgba(255,255,255,.18),
+    0 6px 0 0 #000;
+  transition: transform .04s steps(2), filter .15s;
+}
+
+button:hover{
+  filter: brightness(1.15);
+}
+
+button:active{
+  transform: translateY(6px);
+  box-shadow:
+    0 0 0 4px #000,
+    0 0 0 8px #1f2a45,
+    inset -4px -4px 0 0 rgba(0,0,0,.3),
+    inset 4px 4px 0 0 rgba(255,255,255,.15),
+    0 0 0 0 #000;
+}
+
+/* Dica de erro (se usar alert, já está ok; se quiser inline, estilo pronto) */
+.input-erro{
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  color: #ff8686;
+  text-shadow: 1px 1px 0 #000;
+  font-size: 11px;
+}
+
+/* Responsivo: compacta o painel em telas muito pequenas */
+@media (max-width: 380px){
+  h1{ font-size: 18px; }
+  #apelido, button{ width: 86vw; }
+}
+
+
+#deck{
+  width: 90vw !important;
+}
+
+#deck div[id^="c_"]{
+    border: none !important;
+    aspect-ratio: 4/5 !important;
+}

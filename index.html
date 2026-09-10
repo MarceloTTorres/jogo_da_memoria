@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h1>Jogo da Memória</h1>
+    <label for="apelido">Seu apelido</label>
+    <input type="text" id="apelido">
+    <button onclick="entrar()">Entrar</button>
+
+    <script>
+        function entrar(){
+            if(document.getElementById("apelido").value.length > 0){
+                localStorage.setItem("apelido", document.getElementById("apelido").value)
+                window.location = "/game"
+            }else{
+                alert("Você deve inserir um apelido...")
+            }
+        }
+    </script>
+</body>
+</html>

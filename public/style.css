@@ -1,0 +1,42 @@
+.vez{
+    background-color: yellow;
+}
+
+#placar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#deck{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+#deck div img{
+    max-width: 100%;
+}
+
+#deck div[id^="c_"]{
+    border: 1px solid black;
+    aspect-ratio: 1/1;
+}
+
+#deck div[data-descoberta="false"].clicavel{
+    cursor: pointer;
+}
+
+#deck div[data-descoberta="false"].nao_clicavel{
+    cursor: not-allowed;
+}
+
+#deck div[data-descoberta="false"].escolhida{
+    border: 2px, dashed blue;
+}
+
+#deck div[data-descoberta="true"]{
+    background-color: green;
+}
